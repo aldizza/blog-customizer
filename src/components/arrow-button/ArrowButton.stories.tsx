@@ -1,5 +1,3 @@
-//как в стартере кроме isActive и onClick
-
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { ArrowButton } from './ArrowButton';
