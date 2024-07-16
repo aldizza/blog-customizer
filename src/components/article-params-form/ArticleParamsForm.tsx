@@ -17,7 +17,7 @@ export type ArticleParamsFormProps = {
 };
 
 export const ArticleParamsForm = ({ setAppState }: ArticleParamsFormProps) => {
-    const [isOpened, setIsOpened] = useState<boolean>(false);
+    const [isMenuOpened, setIsMenuOpened] = useState<boolean>(false);
     const [formState, setFormState] = useState<ArticleStateType>(defaultArticleState);
     const rootRef = useRef<HTMLDivElement>(null);
 
@@ -33,7 +33,7 @@ export const ArticleParamsForm = ({ setAppState }: ArticleParamsFormProps) => {
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setAppState(formState);
-        setIsOpened(false);
+        setIsMenuOpened(false);
     };
 
     const handleReset = (e: FormEvent<HTMLFormElement>) => {
@@ -43,23 +43,23 @@ export const ArticleParamsForm = ({ setAppState }: ArticleParamsFormProps) => {
     };
 
     useOutsideClickClose({
-        isOpen: isOpened,
+        isOpen: isMenuOpened,
         rootRef,
-        onChange: setIsOpened,
-        onClose: () => setIsOpened(false)
+        onChange: setIsMenuOpened,
+        onClose: () => setIsMenuOpened(false)
     });
 
     return (
       <>
         <ArrowButton
-            isActive={isOpened}
-            onClick={() => setIsOpened((currentIsOpened) => !currentIsOpened)}
+            isActive={isMenuOpened}
+            onClick={() => setIsMenuOpened((currentIsOpened) => !currentIsOpened)}
         />
         <div
-            onClick={() => setIsOpened(false)}
-            className={clsx(styles.overlay, isOpened && styles.overlay_open)}
+            onClick={() => setIsMenuOpened(false)}
+            className={clsx(styles.overlay, isMenuOpened && styles.overlay_open)}
         />
-        <aside ref={rootRef} className={clsx(styles.container, isOpened && styles.container_open)}>
+        <aside ref={rootRef} className={clsx(styles.container, isMenuOpened && styles.container_open)}>
             <form onSubmit={handleSubmit} onReset={handleReset} className={styles.form}>
                 <Text uppercase={true} weight={800} size={31}>Задайте параметры</Text>
                 <Select

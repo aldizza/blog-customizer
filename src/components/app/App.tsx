@@ -9,22 +9,22 @@ import '../../styles/index.scss';
 import styles from '../../styles/index.module.scss';
 
 export const App = () => {
-    const [appState, setAppState] = useState<ArticleStateType>(defaultArticleState);
+    const [formState, setFormState] = useState<ArticleStateType>(defaultArticleState);
 
     return (
         <div
-            className={clsx(styles.main)}
+            className={styles.main}
             style={
                 {
-                    '--font-family': appState.fontFamilyOption.value,
-                    '--font-size': appState.fontSizeOption.value,
-                    '--font-color': appState.fontColor.value,
-                    '--container-width': appState.contentWidth.value,
-                    '--bg-color': appState.backgroundColor.value,
-                } as CSSProperties
+                    '--font-family': formState.fontFamilyOption.value,
+                    '--font-size': formState.fontSizeOption.value,
+                    '--font-color': formState.fontColor.value,
+                    '--container-width': formState.contentWidth.value,
+                    '--bg-color': formState.backgroundColor.value,
+                } as React.CSSProperties
             }
         >
-            <ArticleParamsForm setAppState={setAppState} />
+            <ArticleParamsForm setAppState={setFormState} />
             <Article />
         </div>
     );
