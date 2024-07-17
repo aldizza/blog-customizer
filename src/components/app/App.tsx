@@ -12,7 +12,7 @@ export const App = () => {
     const [formState, setFormState] = useState<ArticleStateType>(defaultArticleState);
 
     return (
-        <div
+        <main
             className={styles.main}
             style={
                 {
@@ -26,6 +26,6 @@ export const App = () => {
         >
             <ArticleParamsForm setAppState={setFormState} />
             <Article />
-        </div>
+        </main>
     );
 };
